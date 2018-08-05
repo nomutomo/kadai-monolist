@@ -11,7 +11,7 @@ class WelcomeController extends Controller
     public function index()
     {
         //トップページ表示（保存したitemを表示）
-        $items = Item::orderBy('updated_at', 'desc')->paginate(3);
+        $items = Item::orderBy('updated_at', 'desc')->paginate(10);
         return view('welcome', [
             'items' => $items,
         ]);

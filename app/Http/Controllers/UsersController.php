@@ -21,7 +21,7 @@ class UsersController extends Controller
         $user = User::find($id);
         $count_want = $user->want_items()->count();
         //SQLを書いているのは、postgre(heroku)では$user->items()->distinct()が使えなかったため
-        $items = \DB::table('items')->join('item_user', 'items.id', '=', 'item_user.item_id')->select('items.*')->where('item_user.user_id', $user->id)->distinct()->paginate(3);
+        $items = \DB::table('items')->join('item_user', 'items.id', '=', 'item_user.item_id')->select('items.*')->where('item_user.user_id', $user->id)->distinct()->paginate(10);
 
         return view('users.show', [
             'user' => $user,
